@@ -55,8 +55,8 @@
        <geometry>
           <box size= "${base_length} ${base_width} ${base_height}"/>
        </geometry>
-      <material name="Purple">
-        <color rgba="0.5 0.0 0.5 1.0"/>
+      <material name="Pioneer2Body">
+        <color rgba="0.5 0.2 0.5 1.0"/>
       </material>
     </visual>
 
@@ -70,7 +70,7 @@
   </link>
 
   <gazebo reference="base_link">
-    <material>Gazebo/Purple</material>
+    <material>Gazebo/Pioneer2Body</material>
   </gazebo>
 
   
@@ -144,15 +144,6 @@
        We define the wheel’s geometry, material and the joint to connect it to 
        base_link at the appropriate location. -->
   <link name="front_caster">
-    <visual>
-      <geometry>
-        <sphere radius="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
-      </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
-    </visual>
-
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -168,7 +159,6 @@
     <mu2>0.01</mu2>
     <kp value="10000000.0"/>
     <kd value="1.0"/>
-    <material>Gazebo/White</material>
   </gazebo>
 
   <joint name="caster_front_joint" type="fixed">
@@ -179,15 +169,6 @@
   </joint>
   
   <link name="back_caster">
-    <visual>
-      <geometry>
-        <sphere radius="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
-      </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
-    </visual>
-
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -203,7 +184,6 @@
     <mu2>0.01</mu2>
     <kp value="10000000.0"/>
     <kd value="1.0"/>
-    <material>Gazebo/White</material>
   </gazebo>
 
   <joint name="caster_back_joint" type="fixed">
