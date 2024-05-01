@@ -1,0 +1,258 @@
+<?xml version="1.0" ?>
+
+<!-- 
+
+# ===================================== COPYRIGHT ===================================== #
+#                                                                                       #
+#  IFRA (Intelligent Flexible Robotics and Assembly) Group, CRANFIELD UNIVERSITY        #
+#  Created on behalf of the IFRA Group at Cranfield University, United Kingdom          #
+#  E-mail: IFRA@cranfield.ac.uk                                                         #
+#                                                                                       #
+#  Licensed under the Apache-2.0 License.                                               #
+#  You may not use this file except in compliance with the License.                     #
+#  You may obtain a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0  #
+#                                                                                       #
+#  Unless required by applicable law or agreed to in writing, software distributed      #
+#  under the License is distributed on an "as-is" basis, without warranties or          #
+#  conditions of any kind, either express or implied. See the License for the specific  #
+#  language governing permissions and limitations under the License.                    #
+#                                                                                       #
+#  IFRA Group - Cranfield University                                                    #
+#  AUTHORS: Mikel Bueno Viso - Mikel.Bueno-Viso@cranfield.ac.uk                         #
+#           Seemal Asif      - s.asif@cranfield.ac.uk                                   #
+#           Phil Webb        - p.f.webb@cranfield.ac.uk                                 #
+#                                                                                       #
+#  Date: July, 2022.                                                                    #
+#                                                                                       #
+# ===================================== COPYRIGHT ===================================== #
+
+# ======= CITE OUR WORK ======= #
+# You can cite our work with the following statement:
+# IFRA (2022) ROS2.0 ROBOT SIMULATION. URL: https://github.com/IFRA-Cranfield/ros2_RobotSimulation.
+
+-->
+
+<sdf version="1.4">
+
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+
+
+    <state world_name='default'>
+      <sim_time>9881 788000000</sim_time>
+      <real_time>12006 245063578</real_time>
+      <wall_time>1700554466 350143884</wall_time>
+      <iterations>157081</iterations>
+    
+      
+      <model name='box'>
+        <!--<pose>-1.835 -1.31 0.564153 -8e-06 -3.4e-05 0</pose>-->
+        <pose>4.39 2.71 0.65 0 0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='box'>
+          <!--<pose>-1.835 -1.31 0.564153 -8e-06 -3.4e-05 0</pose>-->
+          <pose>4.39 2.71 0.65 0 0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+    </state>
+    
+    <model name='box'>
+      <link name='box'>
+        <collision name='box_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.03 0.03 0.08</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+        </collision> 
+        <visual name='box_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.03 0.03 0.08</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0 0 0.68 0 0 0</pose>
+    </model>
+    
+    
+    
+
+    <model name="my_table">
+      <property name="cx" type="double" value="4.41"/>
+      <property name="cy" type="double" value="2.31"/>
+      <property name="cz" type="double" value="0.575"/>
+      <!-- Adjust the pose as needed -->
+      <!--<pose>-1.6 -1.2 0.3 0 0 0</pose>  -->
+      <static>true</static>
+      <link name="top_link">
+        <pose>4.41 2.61 0.575 0 0 0</pose>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.4 0.4 0.05</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1.0</ambient>
+            <diffuse>0.4 0.4 0.4 1.0</diffuse>
+            <specular>0.2 0.2 0.2 1.0</specular> <!-- Adjust specular intensity -->
+            <emissive>0.0 0.0 0.1 1.0</emissive> <!-- No glow -->
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.4 0.4 0.05</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <link name="leg1">
+        <pose>4.26 2.46 0.275 0 0 0</pose>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.55</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1.0</ambient>
+            <diffuse>0.1 0.1 0.1 1.0</diffuse>
+            <specular>0.2 0.2 0.2 1.0</specular> <!-- Adjust specular intensity -->
+            <emissive>0.0 0.0 0.1 1.0</emissive> <!-- No glow -->
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.05 0.05 0.55</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <link name="leg2">
+        <pose>4.56 2.46 0.275 0 0 0</pose>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.55</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1.0</ambient>
+            <diffuse>0.1 0.1 0.1 1.0</diffuse>
+            <specular>0.2 0.2 0.2 1.0</specular> <!-- Adjust specular intensity -->
+            <emissive>0.0 0.0 0.1 1.0</emissive> <!-- No glow -->
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.05 0.05 0.55</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <link name="leg3">
+        <pose>4.56 2.76 0.275 0 0 0</pose>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.55</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1.0</ambient>
+            <diffuse>0.1 0.1 0.1 1.0</diffuse>
+            <specular>0.2 0.2 0.2 1.0</specular> <!-- Adjust specular intensity -->
+            <emissive>0.0 0.0 0.1 1.0</emissive> <!-- No glow -->
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.05 0.05 0.55</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <link name="leg4">
+        <pose>4.26 2.76 0.275 0 0 0</pose>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.55</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1.0</ambient>
+            <diffuse>0.1 0.1 0.1 1.0</diffuse>
+            <specular>0.2 0.2 0.2 1.0</specular> <!-- Adjust specular intensity -->
+            <emissive>0.0 0.0 0.1 1.0</emissive> <!-- No glow -->
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.55</size> <!-- Length, width, height -->
+            </box>
+          </geometry>
+        </collision>
+      </link>
+
+    </model>
+
+  
+
+
+
+
+
+
+    <!-- GAZEBO PLUGINS: -->
+    <!-- The following plugins must be activated for the ros2_grasping to effectively work: -->
+
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros>
+        <namespace>/ros2_grasp</namespace>
+        <argument>model_states:=model_states</argument>
+        <argument>link_states:=link_states</argument>
+      </ros>
+      <update_rate>1.0</update_rate>
+    </plugin>
+
+    <plugin name="gazebo_ros_properties" filename="libgazebo_ros_properties.so">
+      <ros>
+        <namespace>/ros2_grasp</namespace>
+      </ros>
+    </plugin>
+
+  </world>
+</sdf>

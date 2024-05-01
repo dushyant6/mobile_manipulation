@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<robot name="irb120" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- ===== ARGUMENTS ===== -->
+
+  <!-- END-EFFECTOR:  -->
+  <xacro:arg name="EE_no" default="false"/>
+  <xacro:property name="EE_no" value="$(arg EE_no)"/>
+  <xacro:arg name="EE_schunk" default="false"/>
+  <xacro:property name="EE_schunk" value="$(arg EE_schunk)"/>
+
+
+  <!-- Include XACRO-MACRO file of the IRB120: -->
+  <xacro:include filename="$(find robotbody)/ABB/urdf/irb120_macro.urdf.xacro"/>	
+  <xacro:irb120 
+    prefix=""
+    EE_no="${EE_no}"
+    EE_schunk="${EE_schunk}"
+  />  
+
+</robot>

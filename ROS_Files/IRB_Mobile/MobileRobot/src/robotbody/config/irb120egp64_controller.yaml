@@ -1,0 +1,83 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 20 #Hz
+
+    arm_velocity_controller:
+        type: velocity_controllers/JointGroupVelocityController
+    arm_position_controller:
+        type: position_controllers/JointGroupPositionController
+    joint_state_broadcaster:
+        type: joint_state_broadcaster/JointStateBroadcaster
+
+    irb120_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+irb120_controller:
+  ros__parameters:
+    joints:
+      - irb120_joint1
+      - irb120_joint2
+      - irb120_joint3
+      - irb120_joint4
+      - irb120_joint5
+      - irb120_joint6
+      - egp64_finger_left_joint
+      - egp64_finger_right_joint
+    interfaces:
+      - position
+      - position
+      - position
+      - position
+      - position
+      - position
+      - position
+      - position
+      - velocity
+      - velocity
+      - velocity
+      - velocity
+      - velocity
+      - velocity
+      - velocity
+      - velocity
+      - effort
+      - effort
+      - effort
+      - effort
+      - effort
+      - effort
+      - effort
+      - effort
+arm_velocity_controller:
+  ros__parameters:
+    joints:
+      - irb120_joint1
+      - irb120_joint2
+      - irb120_joint3
+      - irb120_joint4
+      - irb120_joint5
+      - irb120_joint6
+    interface_name: velocity
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
+      - effort
+      
+arm_position_controller:
+  ros__parameters:
+    joints:
+      - irb120_joint1
+      - irb120_joint2
+      - irb120_joint3
+      - irb120_joint4
+      - irb120_joint5
+      - irb120_joint6
+    interface_name: position_arm
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+      - effort

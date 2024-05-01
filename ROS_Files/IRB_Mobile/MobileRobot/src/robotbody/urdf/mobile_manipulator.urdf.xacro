@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="mobile_manipulator" >
+
+<!--<xacro:include filename="$(find robotbody)/urdf/mobile_base/basic_mobile_bot_v2.urdf" />-->
+<xacro:include filename="$(find robotbody)/urdf/mobile_base/mobile_base.urdf" />
+
+<xacro:include filename="$(find robotbody)/ABB/urdf/irb120.urdf.xacro" /> 
+
+
+<link name="box_link">
+    <visual>
+	<origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.3 0.30"/>
+      </geometry>
+	<material name="blue">
+    <color rgba="0 0 0.0 1"/>
+  </material>
+    </visual>
+    <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.3 0.3 0.30"/>
+     </geometry>
+    </collision>
+    <!--
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="100"/>
+      <inertia ixx="100" ixy="100" ixz="100" iyy="100" iyz="100" izz="1000000"/>
+    </inertial>
+    -->
+</link>
+
+<gazebo reference="box_link">
+    <material>Gazebo/Pioneer2Body</material>
+  </gazebo>
+  
+<joint name="box_joint" type="fixed">
+    <parent link="mobile_base_link"/>
+    <child link="box_link"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+</joint>
+<!-- Connect Arm to Base -->
+  <joint name="box_arm" type="fixed">
+    <parent link="box_link"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.15" rpy="0 0 ${pi/2}"/>
+  </joint>   
+
+</robot>

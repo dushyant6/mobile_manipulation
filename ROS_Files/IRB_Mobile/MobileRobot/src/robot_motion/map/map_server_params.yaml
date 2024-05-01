@@ -1,0 +1,3 @@
+map_server:
+    ros__parameters:
+        yaml_filename: "/home/dushyant/Documents/IRB_Mobile/MobileRobot/src/robot_motion/map/map.yaml"
